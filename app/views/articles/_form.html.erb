@@ -11,12 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
+  <%= form_for @article do |f| %>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <p><%= form.check_box :remove_image %>画像を削除する</p>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_field :content %>
+    </div>
+
+    <div class="field">
+      <%= form.label :category %>
+      <%= form.text_field :category %>
+    </div>
+
+    <div class="field">
+      <%= form.label :ingredient %>
+      <%= form.text_area :ingredient %>
+    </div>
+
+    <div class="field">
+      <%= form.label :recipe %>
+      <%= form.text_area :recipe %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>

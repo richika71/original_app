@@ -1,27 +1,45 @@
 <p id="notice"><%= notice %></p>
+<div class=artall>
+  <div class=title>
+    <h1><%= t('posts') %></h1>
 
-<h1>Articles</h1>
+    <div class=search-all>
+      <div class=search>
+        <tr>
+          <%= form_with(url: search_articles_path, local: true, method: :get, class: "search-form") do |form| %>
+            <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+            <%= form.submit "検索", class: "search-btn" %>
+          <% end %>
+        </tr>
+      </div>
+    </div>
+  </div>
 
-<table>
   <thead>
-    <tr>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
+    <th colspan="3"></th>
   </thead>
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.content %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <table class=body>
 
-<br>
+    <tbody>
+      <% @articles.each do |article| %>
+        <div class=artinb>
+          <tr>
+            <td><%= image_tag article.image.url if article.image? %></td>
 
-<%= link_to 'New Article', new_article_path %>
+            <th><h2><%= link_to article.content, article %></h2>
+            <h3><%= article.category %></h3><%= t('author') %>:<%= article.user.name %><th>
+          </tr>
+
+          <tr>
+            <% if user_signed_in? && article.user_id == current_user.id %>
+              <td><%= link_to 'Edit', edit_article_path(article) %>
+              <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%end%>
+          </tr>
+        </div>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>

@@ -1,15 +1,43 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
-  <head>
-    <title>FApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+      <title>あなたのお供</title>
+      <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+  </div>
 
-  <body>
-    <%= yield %>
-  </body>
+    <body>
+      <header>
+        <div class="header__bar row">
+          <h1 class="grid-6">あなたのお供</h1>
+
+          <% if user_signed_in? %>
+            <div class="user_nav grid-6">
+              <%= link_to 'Posts', articles_path %> |
+              <a class="post" href="/articles/new">Submit</a> |
+              <%= link_to "Welcome", welcome_index_path %> |
+              <%= link_to "Mypage", pages_path %>
+              <br>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %> |
+              <%= link_to "Changes to Personal Information", edit_user_registration_path %> |
+
+            </div>
+
+          <% else %>
+            <div class="grid-6">
+              <%= link_to "Login", new_user_session_path %> |
+              <%= link_to "Signup", new_user_registration_path %> |
+              <%= link_to 'Article', articles_path %>
+            </div>
+
+          <% end %>
+
+      </header>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </body>
 </html>

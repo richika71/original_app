@@ -14,12 +14,14 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASS'] %>
+  password: mrainbow7142
   socket: /var/run/mysqld/mysqld.sock
+  host: localhost
 
 development:
   <<: *default
   database: f_app_development
+  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -51,4 +53,4 @@ production:
   <<: *default
   database: f_app_production
   username: f_app
-  password: <%= ENV['F_APP_DATABASE_PASSWORD'] %>
+  password: mrainbow7142

@@ -1,0 +1,50 @@
+/*
+ * This is a manifest file that'll be compiled into article.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add article-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ .title {
+   color: rgba(46, 87, 73, 0.911);
+   background-color: white;
+   text-align: center;
+ }
+ .body tbody{
+    background-color: rgb(210, 255, 212);
+    height: 200px;
+    text-align: center;
+ }
+ .search-all{
+   text-align: center;
+ }
+ .search{
+  margin-right: 10px;
+ }
+
+ .form{
+  background-image: url('/original_app/背景.jpg');
+}
+
+.artall{
+  font-size: medium;
+  text-align: center;
+
+}
+
+.artform{
+  background-color: rgb(210, 255, 212);
+  height: auto;
+  text-align: center;
+  margin-top: 30px;
+}
+
