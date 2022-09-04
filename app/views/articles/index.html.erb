@@ -27,8 +27,8 @@
           <tr>
             <td><%= image_tag article.image.url if article.image? %></td>
 
-            <th><h2><%= link_to article.content, article %></h2>
-            <h3><%= article.category %></h3><%= t('author') %>:<%= article.user.name %><th>
+            <td><h2><%= link_to article.content, article %></h2>
+            <h3><%= article.category %></h3><%= t('author') %>:<%= article.user.name %></td>
           </tr>
 
           <tr>

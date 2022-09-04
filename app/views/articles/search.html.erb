@@ -1,11 +1,14 @@
 <div class=all>
-    <div class=search-all>
-        <div >
-            <%= form_with(url: search_articles_path, local: true, method: :get, class: "search") do |form| %>
-                <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-                <%= form.submit "検索", class: "search-btn" %>
-                <%= link_to "リストへ", articles_path %>
-            <% end %>
+    <div class=title>
+
+        <div class=search-all>
+            <div class = search>
+                <%= form_with(url: search_articles_path, local: true, method: :get, class: "search") do |form| %>
+                    <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+                    <%= form.submit "検索", class: "search-btn" %>
+                    <%= link_to "リストへ", articles_path %>
+                <% end %>
+            </div>
         </div>
     </div>
 
@@ -17,16 +20,19 @@
             <% @articles.each do |article| %>
                 <table class=body>
                     <tr>
-                        <th><%= image_tag article.image.url if article.image? %></th>
-
-                        <th><h2><%= link_to article.content, article %><%= article.name %></h2>
-                        <h3><%= article.category %></h3><th>
+                        <td><%= image_tag article.image.url if article.image? %></td>
+    
+                        <td><h2><%= link_to article.content, article %></h2>
+                        <h3><%= article.category %></h3><%= t('author') %>:<%= article.user.name %></td>
                     </tr>
-                    <br>
+    
                     <tr>
-                        <td><%= link_to 'Edit', edit_article_path(article) %>
-                        <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <% if user_signed_in? && article.user_id == current_user.id %>
+                            <td><%= link_to 'Edit', edit_article_path(article) %>
+                            <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <%end%>
                     </tr>
+    
                 </table>
             <% end %>
         </ul>

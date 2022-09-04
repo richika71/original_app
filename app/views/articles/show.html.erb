@@ -7,8 +7,10 @@
   </p>
 
   <h2>
+    <td>
     <strong>User:</strong>
     <%= @article.user.name %>
+    </td>
   </h2>
 
   <h2>
@@ -22,12 +24,12 @@
   </h2>
 
   <h2>
-    <strong>Ingredient:</strong>
+    <strong>Ingredient</strong>
     <%= simple_format(@article.ingredient) %>
   </h2>
 
   <h2>
-    <strong>Recipe:</strong>
+    <strong>Recipe</strong>
     <%= simple_format(@article.recipe) %>
   </h2>
 

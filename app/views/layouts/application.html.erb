@@ -7,7 +7,6 @@
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
-  </div>
 
     <body>
       <header>
@@ -30,11 +29,13 @@
             <div class="grid-6">
               <%= link_to "Login", new_user_session_path %> |
               <%= link_to "Signup", new_user_registration_path %> |
-              <%= link_to 'Article', articles_path %>
+              <%= link_to 'Posts', articles_path %> |
+              <%= link_to "Welcome", welcome_index_path %>
+
             </div>
 
           <% end %>
-
+        </div>
       </header>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
